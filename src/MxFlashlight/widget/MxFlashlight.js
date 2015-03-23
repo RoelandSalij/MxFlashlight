@@ -19,12 +19,11 @@
 
 // Required module list. Remove unnecessary modules, you can always get them back from the boilerplate.
 require({
-    packages: [{ name: 'jquery', location: '../../widgets/MxFlashlight/lib', main: 'jquery-1.11.2.min' }]
+    packages: [{ name: 'flashlight', location: '../../widgets/MxFlashlight/lib', main: 'Flashlight.js' }]
 }, [
     'dojo/_base/declare', 'mxui/widget/_WidgetBase', 'dijit/_TemplatedMixin',
-    'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/dom-construct', 'dojo/_base/array', 'dojo/_base/lang', 'dojo/text',
-    'jquery', 'dojo/text!MxFlashlight/widget/template/MxFlashlight.html'
-], function (declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, domQuery, domProp, domGeom, domClass, domStyle, domConstruct, dojoArray, lang, text, $, widgetTemplate) {
+    'mxui/dom', 'dojo/dom', 'dojo/query', 'dojo/dom-prop', 'dojo/dom-geometry', 'dojo/dom-class', 'dojo/dom-style', 'dojo/dom-construct', 'dojo/_base/array', 'dojo/_base/lang', 'dojo/text','dojo/text!MxFlashlight/widget/template/MxFlashlight.html'
+], function (declare, _WidgetBase, _TemplatedMixin, dom, dojoDom, domQuery, domProp, domGeom, domClass, domStyle, domConstruct, dojoArray, lang, text, widgetTemplate) {
     'use strict';
     
     // Declare widget's prototype.
@@ -33,9 +32,8 @@ require({
         templateString: widgetTemplate,
 
         // Parameters configured in the Modeler.
-        mfToExecute: "",
-        messageString: "",
-        backgroundColor: "",
+        btnName: null,
+  
 
         // Internal variables. Non-primitives created in the prototype are shared between all widget instances.
         _handle: null,
@@ -50,8 +48,6 @@ require({
         // dijit._WidgetBase.postCreate is called after constructing the widget. Implement to do extra setup work.
         postCreate: function () {
             console.log(this.id + '.postCreate');
-            
-            this.domNode.appendChild(dom.create('span', { 'class': 'mxflashlight-message' }, this.messageString));
 
             this._setupEvents();
         },
@@ -61,7 +57,6 @@ require({
             console.log(this.id + '.update');
 
             this._contextObj = obj;
-            this._resetSubscriptions();
             this._updateRendering();
 
             callback();
@@ -88,40 +83,31 @@ require({
         },
 
         _setupEvents: function () {
+            this.domNode.innerHTML = this.btnName;
+            if(window.plugins !== undefined){
+            if(window.plugins.flashlight !== undefined){
             this.connect(this.domNode, 'click', function () {
-                mx.data.action({
-                    params: {
-                        applyto: 'selection',
-                        actionname: this.mfToExecute,
-                        guids: [this._contextObj.getGuid()]
-                    },
-                    callback: function (obj) {
-                        //TODO what to do when all is ok!
-                    },
-                    error: function (error) {
-                        console.log(this.id + ': An error occurred while executing microflow: ' + error.description);
-                    }
-                }, this);
+                
+                window.plugins.flashlight.available(function(isAvailable) {
+                  if (isAvailable) {
+                    window.plugins.flashlight.toggle();
+
+                  } else {
+                    alert("Flashlight not available on this device");
+                  }
+                });
             });
+            
+            }
+        }
         },
 
         _updateRendering: function () {
-            this.domNode.style.backgroundColor = this._contextObj ? this._contextObj.get(this.backgroundColor) : "";
+            
         },
 
         _resetSubscriptions: function () {
             // Release handle on previous object, if any.
-            if (this._handle) {
-                this.unsubscribe(this._handle);
-                this._handle = null;
-            }
-
-            if (this._contextObj) {
-                this._handle = this.subscribe({
-                    guid: this._contextObj.getGuid(),
-                    callback: this._updateRendering
-                });
-            }
         }
     });
 });
