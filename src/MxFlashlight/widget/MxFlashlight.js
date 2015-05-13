@@ -83,9 +83,10 @@ require({
         },
 
         _setupEvents: function () {
-            this.domNode.innerHTML = this.btnName;
-            if(window.plugins !== undefined){
-            if(window.plugins.flashlight !== undefined){
+             this.domNode.innerHTML = this.btnName;
+            if(typeof window.plugins !== "undefined"){
+               
+            if(typeof window.plugins.flashlight !== "undefined"){
             this.connect(this.domNode, 'click', function () {
                 
                 window.plugins.flashlight.available(function(isAvailable) {
@@ -93,13 +94,16 @@ require({
                     window.plugins.flashlight.toggle();
 
                   } else {
-                    alert("Flashlight not available on this device");
+                    console.log("Flashlight not available on this device");
                   }
                 });
             });
             
             }
         }
+            else{
+                console.log('flashlight plugin not found');
+            }
         },
 
         _updateRendering: function () {

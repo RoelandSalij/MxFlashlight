@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <widget id="MxFlashlight.widget.MxFlashlight" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
-  <name>MxFlashlight</name>
+  <name>Flashlight</name>
   <description>The description of this widget.</description>
 
-  <icon></icon>
+  <icon>iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJtSURBVGhD7dhNSBVRGMbxa9mH5aKiD6mgVQjhIoKCatOiRS0My41Ii4IWRUuhVbgKigxqEy0KWvellRGUkDuJlCArMQhKjHJRuBCUiD7+z8iBw/DOzXupM0ecB35wZ7ziM+OdM++dUpEiRYosyKzAGixNtuZRtuA6xvAN73EN2xB99uIjXuA02nAWw5hCJ2oQZbbjK35jn3Z4WYwT0EE8xWpElfV4A5WXU7DSiFG8xibtiCU34cqLznJW1mEQ76ADzz0H4JeXnziIrKzCK+hAtFrlFi2RKpE+AHkLFc3KRnzB7WQrpxyHVd65g1pkZSf0vqPJVuAswUukS6ddRblcxiesTLYCpgVWYctFZEU3vmm0J1sBcxdW2Sy6Gy+DlQHcm30ZJlrD3U2rEk+wFelof//syzA5BqvgXHxGBxqgaLQYh8aMYLkBq1wldCDdeAwNfhsQLEOwSlXrCILlAn7BKlKpH9CQFyznYRWphsbuQwiWf1lew1/QaVQfG/fHH6Haa0BLZbkh77+kC65ADxah1dv3N9/xAM3Q7waNX14l6qCoyBVoBLAuaJV+Dq3t+qaWS/zyH7AW6ezCBNz7+qDJsgka9nKLX16ewYoubC2Feo/+Q7l+OXFJl5dJ7ICfS3A/f4h65B6/VJqe7+gxyW7ouY/brzMffJa3Uq68z79ooznz5+CXnIteRHHm96PS2UZnPorymsU10lols6h8FKuNohuTnpRZRS362LibWRRZjhFYZdN05qMq73ILVmFfNDcpK3swA6u43Ee05V0OQ1+s/eIayPRQSh+zeZHNOAnNN2egx35FihQpsuBTKv0BbgaOjnde5B8AAAAASUVORK5CYII=</icon>
 
   <properties>
         <property key="btnName" type="string" required="true">
