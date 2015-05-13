@@ -21,10 +21,10 @@ In order to use flashlight functionality you need to include the following plugi
 
 `<gap:plugin name="nl.x-services.plugins.flashlight" />`
 
-For more information on how to setup a phonegap application in mendix and configure the config.xml use this reference [guide](https://github.com/mendix/MxPushNotifications#creating-phonegap-app)
+For more information on how to setup a phonegap application in mendix and configure the config.xml use this reference [guide](https://github.com/mendix/MxPushNotifications#creating-phonegap-app).
 
 ### Including the flashlight.js
-In order for the widget to work you will need to inlude the following javascript load in your mendix index.html
+In order for the widget to work you will need to inlude the following javascript load in your mendix index.html.
 
 `<script type="text/javascript" src="widgets/MxFlashlight/lib/Flashlight.js"></script>`
 
